@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-5">
-      <div class="row">
+      <div class="row justify-content-between">
              <AvatarComp
                 v-for="(element, index) in avatars" :key="index"
                 :nome='element.name'
