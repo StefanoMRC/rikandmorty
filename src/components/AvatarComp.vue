@@ -1,9 +1,10 @@
 <template>
   <div class="col-3 text-center py-4">
     <img :src="img" alt="" class="rounded-circle">
-    <h2>{{nome}}</h2>
-    <span>{{origine}}</span>
-    <h4>{{specie}}</h4>
+    <h3>{{nome}}</h3>
+    <div class="border border-1 w-25 m-auto border-dark"></div>
+    <p class="mb-0 mt-1">{{origine}}</p>
+    <h5>{{specie}}</h5>
   </div>
 </template>
 
