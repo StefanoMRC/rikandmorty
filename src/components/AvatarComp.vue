@@ -1,6 +1,6 @@
 <template>
-  <div class="col-3 text-center py-4">
-    <img :src="img" alt="" class="rounded-circle">
+  <div class="col-3 text-center p-5">
+    <img :src="img" alt="" class="rounded-circle img-fluid">
     <h3 class="mt-2">{{nome}}</h3>
     <div class="border border-1 w-25 m-auto border-dark"></div>
     <p class="mb-0 mt-1">{{origine}}</p>
