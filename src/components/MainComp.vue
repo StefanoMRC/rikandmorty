@@ -1,9 +1,11 @@
 <template>
   <div class="container mt-5">
-      
+        <RicercaComp @funzRicerca='metodoRicerca'/>
       <div class="row justify-content-between" v-if="!loadingStatus">
+        
+          
              <AvatarComp
-                v-for="(element, index) in avatars" :key="index"
+                v-for="(element, index) in filtraggio" :key="index"
                 :nome='element.name'
                 :origine='element.origin'
                 :specie='element.species'
@@ -19,18 +21,33 @@
 <script>
 import AvatarComp from './AvatarComp.vue'
 import LoaderComp from './LoaderComp.vue'
+import RicercaComp from './RicercaComp.vue'
 import axios from 'axios';
 
 export default {
   name: 'MainComp',
   components:{
       AvatarComp,
-      LoaderComp
+      LoaderComp,
+      RicercaComp
   },
   data() {
       return {
           avatars:[],
-          loadingStatus:true
+          loadingStatus:true,
+          testoRicerca:''
+      }
+  },
+  computed:{
+      filtraggio(){
+          if (this.testoRicerca=='') {
+              return this.avatars
+          }
+          return this.avatars.filter((element)=> {
+              return element.name
+                    .toLowerCase()
+                    .includes(this.testoRicerca.toLowerCase())
+          })
       }
   },
   created() {
@@ -38,7 +55,13 @@ export default {
       .then((res)=>{
           this.avatars=res.data
           this.loadingStatus=false
+          
       })
+  },
+  methods: {
+      metodoRicerca(testo){
+          this.testoRicerca=testo;
+      }
   },
 
 }
